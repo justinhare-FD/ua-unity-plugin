@@ -36,6 +36,7 @@ Supported Features
 ------------------
 - Tags
 - Aliases
+- Named users
 - Push
 - Location
 - In-app messages
@@ -44,7 +45,6 @@ Supported Features
 
 Currently Unsupported Features
 ------------------------------
-- Named users
 - Tag groups
 - Custom events
 
@@ -91,6 +91,9 @@ The main plugin script can be found Assets/Plugins/UAirship.cs. It works for iOS
 **public static	string GetAlias()**
 - Gets the alias.
 
+**public static	void SetNamedUserId(string namedUserId)**
+- Sets the named user ID. Note that the app must be configured to allow this to be set from the device.
+
 **public static	string GetChannelId()**
 - Gets the channel ID for device.
 
@@ -118,5 +121,3 @@ Project Structure
 - *ios-plugin*: The iOS native unity plugin.
 - *src*: The common unity plugin source.
 - *Scripts*: Example scripts for the plugin.
-
-
