@@ -163,6 +163,13 @@ void UAUnityPlugin_setAlias(const char* alias) {
     [[UAirship push] updateRegistration];
 }
 
+void UAUnityPlugin_setNamedUserId(const char* namedUserId) {
+    NSString *namedUserIdString = [NSString stringWithUTF8String:namedUserId];
+
+    NSLog(@"UnityPlugin setNamedUserId %@", namedUserIdString);
+    [UAirship push].namedUser.identifier = namedUserIdString;
+}
+
 const char* UAUnityPlugin_getChannelId() {
     NSLog(@"UnityPlugin getChannelId");    
     return MakeStringCopy([[UAirship push].channelID UTF8String]);

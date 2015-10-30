@@ -86,6 +86,11 @@ public class UAirshipPluginAndroid : IUAirshipPlugin
 		return Call<string>("getAlias");
 	}
 
+	public void SetNamedUserId(string namedUserId)
+	{
+		Call("setNamedUserId", namedUserId);
+	}
+
 	public string GetChannelId()
 	{
 		return Call<string>("getChannelId");

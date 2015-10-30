@@ -30,6 +30,7 @@ void UAUnityPlugin_addTag(const char* tag);
 void UAUnityPlugin_removeTag(const char* tag);
 const char* UAUnityPlugin_getAlias();
 void UAUnityPlugin_setAlias(const char* alias);
+void UAUnityPlugin_setNamedUserId(const char* namedUserId);
 const char* UAUnityPlugin_getChannelId();
 
 #pragma mark -

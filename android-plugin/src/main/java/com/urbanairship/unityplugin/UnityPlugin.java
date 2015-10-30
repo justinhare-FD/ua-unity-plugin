@@ -129,6 +129,11 @@ public class UnityPlugin {
         UAirship.shared().getPushManager().setAlias(alias);
     }
 
+    public void setNamedUserId(String namedUserId) {
+        Logger.debug("UnityPlugin setNamedUserId: " + namedUserId);
+        UAirship.shared().getPushManager().getNamedUser().setId(namedUserId);
+    }
+
     // location
 
     public void enableLocation() {

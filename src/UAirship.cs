@@ -10,9 +10,9 @@ using System.Collections.Generic;
 public class UAirship
 {
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
 	private static IUAirshipPlugin plugin = new UAirshipPluginAndroid();
-#elif UNITY_IPHONE
+#elif UNITY_IPHONE && !UNITY_EDITOR
 	private static IUAirshipPlugin plugin = new UAirshipPluginIOS();
 #else
 	private static IUAirshipPlugin plugin = null;
@@ -26,7 +26,7 @@ public class UAirship
 		}
 	}
 
-	public static void RemoveListener(GameObject gameObject) 
+	public static void RemoveListener(GameObject gameObject)
 	{
 		if (plugin != null)
 		{
@@ -117,6 +117,14 @@ public class UAirship
 			return plugin.GetAlias();
 		}
 		return null;
+	}
+
+	public static void SetNamedUserId(string namedUserId)
+	{
+		if (plugin != null)
+		{
+			plugin.SetNamedUserId(namedUserId);
+		}
 	}
 
 	public static string GetChannelId()

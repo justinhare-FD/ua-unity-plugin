@@ -41,6 +41,8 @@ public class UAirshipPluginIOS : IUAirshipPlugin
 	[DllImport ("__Internal")]
 	private static extern void UAUnityPlugin_setAlias(string alias);
 	[DllImport ("__Internal")]
+	private static extern void UAUnityPlugin_setNamedUserId(string namedUserId);
+	[DllImport ("__Internal")]
 	private static extern string UAUnityPlugin_getChannelId();
 
 	//Location Function Imports
@@ -117,6 +119,11 @@ public class UAirshipPluginIOS : IUAirshipPlugin
 	public string GetAlias()
 	{
 		return UAUnityPlugin_getAlias();
+	}
+
+	public void SetNamedUserId(string namedUserId)
+	{
+		UAUnityPlugin_setNamedUserId(namedUserId);
 	}
 
 	public string GetChannelId()

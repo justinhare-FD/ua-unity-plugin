@@ -34,6 +34,8 @@ interface IUAirshipPlugin
 
 	string GetAlias();
 
+	void SetNamedUserId(string namedUserId);
+
 	string GetChannelId();
 
 
