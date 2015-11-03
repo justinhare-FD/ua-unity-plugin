@@ -23,7 +23,7 @@ task build << {
         into file("$buildDir/unity-plugin/Assets/Plugins/iOS")
         rename "AirshipConfig-template.plist", "AirshipConfig.plist"
 
-        if (shouldSwapKeys)
+        if (shouldSwapKeys.toBoolean())
         {
           filter { String line ->
               line.replaceAll(Pattern.quote("APP_KEY"), appKey)

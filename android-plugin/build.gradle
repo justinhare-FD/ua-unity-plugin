@@ -79,7 +79,7 @@ def convertAar(String aarPath, String destinationPath) {
         into file(destinationPath)
         include "AndroidManifest.xml"
 
-        if (shouldSwapKeys)
+        if (shouldSwapKeys.toBoolean())
         {
           filter { String line ->
               line.replaceAll(Pattern.quote("\${applicationId}"), androidApplicationId)
@@ -134,7 +134,7 @@ task packagePlugin <<  {
     copy {
         from file("airshipconfig.properties")
         into file("$buildDir/unity-plugin/Assets/Plugins/Android/assets")
-        if (shouldSwapKeys)
+        if (shouldSwapKeys.toBoolean())
         {
           filter { String line ->
               line.replaceAll(Pattern.quote("GCM_SENDER"), gcmSender)
@@ -149,7 +149,7 @@ task packagePlugin <<  {
         from file("AndroidManifest.xml")
         into file("$buildDir/unity-plugin/Assets/Plugins/Android")
 
-        if (shouldSwapKeys) {
+        if (shouldSwapKeys.toBoolean()) {
           filter { String line ->
               // Unity does not support applicationId placeholders
               line.replaceAll(Pattern.quote("\${applicationId}"), androidApplicationId)
