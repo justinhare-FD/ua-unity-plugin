@@ -78,8 +78,12 @@ def convertAar(String aarPath, String destinationPath) {
         from zipTree(file(aarPath))
         into file(destinationPath)
         include "AndroidManifest.xml"
-        filter { String line ->
-            line.replaceAll(Pattern.quote("\${applicationId}"), androidApplicationId)
+
+        if (shouldSwapKeys)
+        {
+          filter { String line ->
+              line.replaceAll(Pattern.quote("\${applicationId}"), androidApplicationId)
+          }
         }
     }
 
@@ -130,10 +134,13 @@ task packagePlugin <<  {
     copy {
         from file("airshipconfig.properties")
         into file("$buildDir/unity-plugin/Assets/Plugins/Android/assets")
-        filter { String line ->
-            line.replaceAll(Pattern.quote("GCM_SENDER"), gcmSender)
-                .replaceAll(Pattern.quote("APP_KEY"), appKey)
-                .replaceAll(Pattern.quote("APP_SECRET"), appSecret)
+        if (shouldSwapKeys)
+        {
+          filter { String line ->
+              line.replaceAll(Pattern.quote("GCM_SENDER"), gcmSender)
+                  .replaceAll(Pattern.quote("APP_KEY"), appKey)
+                  .replaceAll(Pattern.quote("APP_SECRET"), appSecret)
+          }
         }
     }
 
@@ -141,13 +148,15 @@ task packagePlugin <<  {
     copy {
         from file("AndroidManifest.xml")
         into file("$buildDir/unity-plugin/Assets/Plugins/Android")
-        filter { String line ->
-            // Unity does not support applicationId placeholders
-            line.replaceAll(Pattern.quote("\${applicationId}"), androidApplicationId)
+
+        if (shouldSwapKeys) {
+          filter { String line ->
+              // Unity does not support applicationId placeholders
+              line.replaceAll(Pattern.quote("\${applicationId}"), androidApplicationId)
+          }
         }
     }
 }
 
 packagePlugin.dependsOn('cleanPlugin')
 assemble.dependsOn packagePlugin
-
