@@ -24,6 +24,7 @@ def main(argv):
                 , 'System/Library/Frameworks/Security.framework'
                 , 'System/Library/Frameworks/CoreData.framework'
                 , 'System/Library/Frameworks/CoreLocation.framework'
+                , 'System/Library/Frameworks/PassKit.framework'
                 ]
 
         compiler_flags = ['-ObjC']
