@@ -113,7 +113,7 @@ task packagePlugin <<  {
     }
 
     // Convert the SDK
-    convertAar("aars/urbanairship-lib-6.3.0.aar", "$buildDir/unity-plugin/Assets/Plugins/Android/urbanairship-lib")
+    convertAar("aars/urbanairship-lib-6.4.1.aar", "$buildDir/unity-plugin/Assets/Plugins/Android/urbanairship-lib")
 
     // Convert the plugin
     convertAar("$buildDir/outputs/aar/android-plugin-release.aar", "$buildDir/unity-plugin/Assets/Plugins/Android/ua-unity-plugin-lib")
